@@ -2,15 +2,20 @@ const express = require('express');
 const app = express();
 const { MongoClient, ServerApiVersion, ObjectId } = require('mongodb');
 const cors = require('cors');
-const port = process.env.PORT ||  5000;
+require('dotenv').config();
 
-// name:  clean-city
-// pass:  rCxjARkhLMKhaySK
+const port = process.env.PORT ||  6000;
+
+
+
+
+
+
 app.use(cors());
 app.use(express.json());
 
 
-const uri = "mongodb+srv://clean-city:rCxjARkhLMKhaySK@cluster0.pzm1kvk.mongodb.net/?retryWrites=true&w=majority";
+const uri = `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASS}@cluster0.pzm1kvk.mongodb.net/?retryWrites=true&w=majority`;
 
 const client = new MongoClient(uri, {
   serverApi: {
